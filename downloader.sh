@@ -13,6 +13,8 @@ export -f pressButton
 openMyCollection(){
     getCords "[@text="My Collection"]/preceding-sibling::node"|pressButton
 }
+export -f openMyCollection
+
 openAlbums(){
     getCords "[@text="Albums"]/preceding-sibling::node"|pressButton
 }
