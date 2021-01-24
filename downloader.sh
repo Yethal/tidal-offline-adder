@@ -1,4 +1,7 @@
 #!/bin/sh
+#increase this value if you keep hitting duplicates
+swipe=2500
+
 launchTidal(){
     adb shell monkey -p com.aspiro.tidal -c android.intent.category.LAUNCHER 1
 }
@@ -39,7 +42,7 @@ export -f downloadAlbum
 scrollAlbums(){
 scrollTo="$(getCords [@text="Albums"])"
 scrollFrom="$(getOptions|tail -n1)"
-adb shell input swipe "$scrollFrom" "$scrollTo" 2500
+adb shell input swipe "$scrollFrom" "$scrollTo" "$swipe"
 }
 export -f scrollAlbums
 
