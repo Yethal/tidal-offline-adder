@@ -3,9 +3,10 @@ Script to automate the tedious process of adding your entire Tidal collection to
 
 # Usage:
 * Make sure the phone is connected to the internet
+* Make sure adb server is started and the phone detected (`adb devices` returns a device id)
 * Connect your phone to your PC via adb
 * Launch the script
-* Kill the script manually once it gets to the end of the list (I did not implement detecting whether we're at the end of the list)
+* Kill the script manually once it gets to the end of the list (I did not implement detecting whether we're at the end of the list yet)
 
 # Debugging
-If the loop doesn't scroll through the list properly comment out the main loop, uncomment the debug one, run it and see if the album names printed to stdout are duplicated. If they are increase the last argument to adb shell input swipe in scrollAlbums() function from 2500 to a higher value
+If the loop doesn't scroll through the list properly comment out the main loop, increase the swipe value
