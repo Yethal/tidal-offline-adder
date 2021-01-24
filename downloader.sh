@@ -29,7 +29,7 @@ getOptions(){
 export -f getOptions
 
 getAlbumNames(){
-    adb exec-out uiautomator dump /dev/tty | awk '{gsub("UI hierchary dumped to: /dev/tty", "");print}'|xmllint -xpath "//node[@resource-id="com.aspiro.tidal:id/title"]/@text" -
+    adb exec-out uiautomator dump /dev/tty | awk '{gsub("UI hierchary dumped to: /dev/tty", "");print}'|xmllint -xpath "//node[@resource-id="com.aspiro.tidal:id/title"]/@text" -| cut -f2 -d '=' | tr -d \"
 }
 export -f getAlbumNames
 
