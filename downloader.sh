@@ -6,7 +6,7 @@ launchTidal(){
     adb shell monkey -p com.aspiro.tidal -c android.intent.category.LAUNCHER 1
 }
 getCords(){
-    adb exec-out uiautomator dump /dev/tty | awk '{gsub("UI hierchary dumped to: /dev/tty", "");print}'|xmllint -xpath "//node$1/@bounds" - | awk -F "]" '{gsub("bounds=","");gsub(""\[","");gsub(","," ");print $1}'
+    adb exec-out uiautomator dump /dev/tty | awk '{gsub("UI hierchary dumped to: /dev/tty", "");print}'|xmllint --xpath "//node$1/@bounds" - | awk -F "]" '{gsub("bounds=","");gsub(""\[","");gsub(","," ");print $1}'
 }
 pressButton(){
     xargs -r -I{} adb shell input tap {}
@@ -14,33 +14,33 @@ pressButton(){
 export -f pressButton
 
 openMyCollection(){
-    getCords "[@text="My Collection"]/preceding-sibling::node"|pressButton
+    getCords "[@text=\"My Collection\"]/preceding-sibling::node"|pressButton
 }
 export -f openMyCollection
 
 openAlbums(){
-    getCords "[@text="Albums"]/preceding-sibling::node"|pressButton
+    getCords "[@text=\"Albums\"]/preceding-sibling::node"|pressButton
 }
 export -f getCords
 
 getOptions(){
-    getCords "[@resource-id="com.aspiro.tidal:id/options"]"
+    getCords "[@resource-id=\"com.aspiro.tidal:id/options\"]"
 }
 export -f getOptions
 
 getAlbumNames(){
-    adb exec-out uiautomator dump /dev/tty | awk '{gsub("UI hierchary dumped to: /dev/tty", "");print}'|xmllint -xpath "//node[@resource-id="com.aspiro.tidal:id/title"]/@text" -| cut -f2 -d '=' | tr -d \"
+    adb exec-out uiautomator dump /dev/tty | awk '{gsub("UI hierchary dumped to: /dev/tty", "");print}'|xmllint --xpath "//node[@resource-id=\"com.aspiro.tidal:id/title\"]/@text" -| cut -f2 -d '=' | tr -d \"
 }
 export -f getAlbumNames
 
 downloadAlbum() {
     adb shell input tap "$1" "$2"
-    getCords "[@text="Download"]"|pressButton
+    getCords "[@text=\"Download\"]"|pressButton
 }
 export -f downloadAlbum
 
 scrollAlbums(){
-scrollTo="$(getCords [@text="Albums"])"
+scrollTo="$(getCords [@text=\"Albums\"])"
 scrollFrom="$(getOptions|tail -n1)"
 adb shell input swipe "$scrollFrom" "$scrollTo" "$swipe"
 }
