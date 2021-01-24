@@ -13,3 +13,5 @@ If the loop doesn't scroll through the list properly comment out the main loop, 
 
 # todo
 Rewrite this to Python so it works on other platforms
+Add more functionality (Download by artist, omit specific albums etc)
+Maybe add some help function, and use script argument to determine what to do
