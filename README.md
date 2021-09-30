@@ -12,6 +12,6 @@ Script to automate the tedious process of adding your entire Tidal collection to
 If the loop doesn't scroll through the list properly navigate to the Albums list in the app, run `source functions.sh`, `getAlbumNames`, `scrollAlbums` and `getAlbumNames` again to see if the list printed in the terminal matches what's being displayed in the Tidal app
 
 # todo
-Rewrite this to Python so it works on other platforms
-Add more functionality (Download by artist, omit specific albums etc)
-Maybe add some help function, and use script argument to determine what to do
+* Rewrite this to Python so it works on other platforms
+* Add more functionality (Download by artist, omit specific albums etc)
+* Maybe add some help function, and use script argument to determine what to do
